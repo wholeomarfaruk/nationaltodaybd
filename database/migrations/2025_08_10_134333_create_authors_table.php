@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('title')->nullable(); // Optional title for the author
-            $table->string('email')->unique();
+            $table->string('email')->nullable()->unique();
             $table->text('bio')->nullable(); // Optional biography for the author
             $table->timestamps();
         });
