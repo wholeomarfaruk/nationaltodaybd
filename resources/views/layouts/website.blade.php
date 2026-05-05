@@ -116,9 +116,9 @@
 
                 </div>
                 <div class="tools">
-                    <div class="btn-group"><span class="btn e-paper">Fast. Fresh. Metro News.</span></div>
+                    <div class="btn-group"><span class="btn e-paper">Your Nation, Your News</span></div>
                     <div class="date btn-group">
-                        <p id="localdate" class="btn e-paper">২০শে আগস্ট, ২০২৫</p>
+                        <p id="localdate" class="btn e-paper">২০শে আগস্ট, ২০২6</p>
                     </div>
                     <div class="btn-group ">
                         <a href="#" class="btn e-paper"> <i class="fa-solid fa-newspaper"></i> ই-পেপার </a>

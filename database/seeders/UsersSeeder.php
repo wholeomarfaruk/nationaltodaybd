@@ -13,12 +13,16 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Super Admin',
-            'email' => 'superadmin@metronews.info',
-            'password' => bcrypt('password'), // Ensure to set a default password
-        ]);
-        $user = User::find(1);
+        User::updateOrCreate(
+            ['email' => 'superadmin@nationaltodaybd.com'],
+            [
+                'name' => 'superadmin',
+                'email' => 'superadmin@nationaltodaybd.com',
+                'password' => bcrypt('password'), // Ensure to set a default password
+            ]
+        );
+
+        $user = User::where('email', 'superadmin@nationaltodaybd.com')->first();
         $user->assignRole('superadmin');
 
     }
