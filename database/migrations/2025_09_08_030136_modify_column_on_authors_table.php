@@ -24,9 +24,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('authors', function (Blueprint $table) {
-            $table->dropColumn('phone');
-            $table->string('email')->unique()->change();
-            $table->dropColumn('slug');
+            if (Schema::hasTable('authers') &&Schema::hasColumn('authors', 'email')) {
+                $table->string('email')->unique()->change();
+            }
+            if(Schema::hasTable('authers')) {
+                $table->dropColumn('phone');
+                $table->dropColumn('slug');
+            }
         });
     }
 };
