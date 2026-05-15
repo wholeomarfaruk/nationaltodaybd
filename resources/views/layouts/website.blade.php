@@ -51,7 +51,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('website/css/style.css?v=1.1.4') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/style.css?v=1.1.5') }}">
     @stack('styles')
 </head>
 
@@ -111,7 +111,7 @@
                 <div class="logo">
                     <a href="/">
                         {{-- <span class="fw-bold">Fast.Fresh.Metro News</span><br> --}}
-                        <img style="max-width: 75px !important;" src="{{ asset(setting('general.logo')) }}"
+                        <img style="max-width: 170px !important;" src="{{ asset(setting('general.logo')) }}"
                             alt=""></a>
 
                 </div>
@@ -149,9 +149,9 @@
             <nav class=" navbar  navbar-expand-lg navbar-light p-0">
                 <div class="container-fluid wrapper menu-area">
                     <!-- Brand -->
-                    <div class="logo" style="max-width: 75px !important;">
+                    <div class="logo" style="max-width: 170px !important;">
                         <a href="/">
-                            <img style="max-width: 75px !important;" src="{{ asset(setting('general.logo')) }}"
+                            <img style="max-width: 170px !important;" src="{{ asset(setting('general.logo')) }}"
                                 alt="">
                         </a>
                     </div>
@@ -236,7 +236,8 @@
 
                             <button class="navbar-toggler btn" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#main-canvas" aria-controls="main-canvas">
-                                <span class="navbar-toggler-icon"></span>
+                                <i class="fa-solid fa-bars"></i>
+
                             </button>
 
 
@@ -361,7 +362,7 @@
         <div class="wrapper ">
 
 
-                @livewire('ad-component', ['id' => 18, 'height' => '80px'], key('ad-18'))
+            @livewire('ad-component', ['id' => 18, 'height' => '80px'], key('ad-18'))
 
         </div>
         @yield('content')
@@ -370,13 +371,13 @@
             @livewire('ad-component', ['id' => 17, 'height' => '80px'], key('ad-17'))
         </div>
     </main>
-    <footer id="footer_area" class="footer-2" style="background: #022c6f;">
+    <footer id="footer_area" class="footer-2" style="background: #000000;">
         <div class="row wrapper py-4 gap-0 gap-md-0 top-footer">
             <div class="col-12 col-md-4 footer-card">
-                <h3 class=" mb-3 footer-card-title">মেট্রো নিউজ</h3>
+                <h3 class=" mb-3 footer-card-title">ন্যাশনাল টুডে</h3>
                 <p class=" mb-2 footer-card-text">
                     <span>সম্পাদক ও প্রকাশক</span><br>
-                    <span class="text-white">মোঃ মিজানুর রাহমান</span>
+                    <span class="text-white">আসাদুজ্জুহা জাবাল</span>
                     <span class="d-block mt-2 text">
 
 
@@ -389,42 +390,48 @@
                         @if (setting('social.facebook'))
                             <li class="nav-item">
                                 <a class="nav-link" style="" target="_blank"
-                                    href="{{ setting('social.facebook') }}"> <img src="{{asset('website/img/icons/facebook-svgrepo-com.svg')}}" />
+                                    href="{{ setting('social.facebook') }}"> <img
+                                        src="{{ asset('website/img/icons/facebook-svgrepo-com.svg') }}" />
                                 </a>
                             </li>
                         @endif
                         @if (setting('social.instagram'))
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link " style=""
-                                    href="{{ setting('social.instagram') }}">  <img src="{{asset('website/img/icons/instagram-svgrepo-com.svg')}}" />
+                                    href="{{ setting('social.instagram') }}"> <img
+                                        src="{{ asset('website/img/icons/instagram-svgrepo-com.svg') }}" />
                                 </a>
                             </li>
                         @endif
                         @if (setting('social.youtube'))
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link " style=""
-                                    href="{{ setting('social.youtube') }}">  <img src="{{asset('website/img/icons/youtube-svgrepo-com.svg')}}" />
+                                    href="{{ setting('social.youtube') }}"> <img
+                                        src="{{ asset('website/img/icons/youtube-svgrepo-com.svg') }}" />
                                 </a>
                             </li>
                         @endif
                         @if (setting('social.twitter'))
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link " style=""
-                                    href="{{ setting('social.twitter') }}"> <img src="{{asset('website/img/icons/twitter_x.svg')}}" />
+                                    href="{{ setting('social.twitter') }}"> <img
+                                        src="{{ asset('website/img/icons/twitter_x.svg') }}" />
                                 </a>
                             </li>
                         @endif
                         @if (setting('social.linkedin'))
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link " style=""
-                                    href="{{ setting('social.linkedin') }}">  <img src="{{asset('website/img/icons/linkedin-svgrepo-com.svg')}}" />
+                                    href="{{ setting('social.linkedin') }}"> <img
+                                        src="{{ asset('website/img/icons/linkedin-svgrepo-com.svg') }}" />
                                 </a>
                             </li>
                         @endif
                         @if (setting('social.tiktok'))
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link " style=""
-                                    href="{{ setting('social.tiktok') }}"> <img src="{{asset('website/img/icons/tiktok-logo-logo-svgrepo-com.svg')}}" />
+                                    href="{{ setting('social.tiktok') }}"> <img
+                                        src="{{ asset('website/img/icons/tiktok-logo-logo-svgrepo-com.svg') }}" />
                                 </a>
                             </li>
                         @endif
@@ -436,7 +443,7 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('home') }}"><i class="fa-solid fa-arrow-right-long"></i>
-                            মেট্রো নিউজ</a>
+                            ন্যাশনাল টুডে</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
@@ -538,9 +545,11 @@
         <hr class="text-white">
         <div class="wrapper py-1 bottom-footer">
             <h2 style="font-size: 14px;font-weight: 400;color: #ffffffab; text-align:left;">© 2026. All right
-                Reserved Developed By <a href="https://www.facebook.com/alimuzahid.dev" style="font-weight: 400;color: #fff">Ali
+                Reserved Developed By <a href="https://www.facebook.com/alimuzahid.dev"
+                    style="font-weight: 400;color: #fff">Ali
                     Muzahid</a></h2>
-            <p style="font-size: 14px;font-weight: 400;color: #ffffffab; text-align:right;">ওয়েবসাইটের কোনো লেখা, ছবি, ভিডিও অনুমতি ছাড়া ব্যবহার বেআইনি।</p>
+            <p style="font-size: 14px;font-weight: 400;color: #ffffffab; text-align:right;">ওয়েবসাইটের কোনো লেখা, ছবি,
+                ভিডিও অনুমতি ছাড়া ব্যবহার বেআইনি।</p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"

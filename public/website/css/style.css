@@ -291,7 +291,7 @@ input[type=search] {
   color: #0f0f0f;
 }
 #header_area .menu_bar {
-  background-color: #fff;
+  background-color: #ff0000;
   border-top: 1px solid #ddd;
 }
 #header_area .menu_bar .logo {
@@ -344,6 +344,7 @@ input[type=search] {
 #header_area .menu_bar .menu-area .navbar-nav .nav-item {
   font-size: 1rem;
   font-weight: 600;
+  color: #fff;
 }
 @media (max-width: 992px) {
   #header_area .menu_bar .menu-area .navbar-nav .nav-item {
@@ -353,15 +354,23 @@ input[type=search] {
     border-bottom: 0;
   }
 }
+#header_area .menu_bar .menu-area .navbar-nav .nav-item a.nav-link {
+  color: #fff;
+}
 #header_area .menu_bar .menu-area .navbar-nav .nav-item a.nav-link.active {
-  color: #ff0000;
+  color: #000000;
 }
 #header_area .menu_bar .menu-area .navbar-nav .nav-item a.nav-link:hover {
-  color: #ff0000;
+  color: #000000;
 }
 #header_area .menu_bar .menu-area button.navbar-toggler {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   display: block;
+  color: #fff;
+  border-color: #fff;
+}
+#header_area .menu_bar .menu-area button.navbar-toggler:hover {
+  color: #000000;
 }
 #header_area .menu_bar .menu-area .tools {
   display: flex;
@@ -425,6 +434,7 @@ input[type=search] {
   font-size: 1rem;
   background-color: transparent !important;
   padding: 3px 10px !important;
+  color: #ffffff;
 }
 @media (max-width: 992px) {
   #header_area .menu_bar .menu-area .tools .langswitch-box #lang-switcher {
@@ -653,12 +663,14 @@ input[type=search] {
     width: 100%;
   }
 }
-.footer-2 .top-footer .footer-card .footer-card-text, .footer-2 .top-footer .footer-card .nav-link {
+.footer-2 .top-footer .footer-card .footer-card-text,
+.footer-2 .top-footer .footer-card .nav-link {
   font-size: 1rem;
   color: #b4b6b9;
   font-family: "SolaimanLipi", sans-serif;
 }
-.footer-2 .top-footer .footer-card .contact-item .title, .footer-2 .top-footer .footer-card .contact-item .text {
+.footer-2 .top-footer .footer-card .contact-item .title,
+.footer-2 .top-footer .footer-card .contact-item .text {
   font-size: 1rem;
   font-family: "SolaimanLipi", sans-serif;
 }
