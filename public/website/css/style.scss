@@ -293,7 +293,7 @@ input[type="search"] {
     }
 
     .menu_bar {
-        background-color: #ff0000;
+        background-color: #fff;
         border-top: 1px solid #ddd;
         .logo {
             max-width: 150px;
@@ -346,7 +346,7 @@ input[type="search"] {
                 & .nav-item {
                     font-size: 1rem;
                     font-weight: 600;
-                    color: #fff;
+                    color: #000;
 
                     @media (max-width: 992px) {
                         border-bottom: 1px solid #ddd;
@@ -357,7 +357,7 @@ input[type="search"] {
                     }
 
                     & a.nav-link {
-                         color: #fff;
+
                         &.active {
                             color: #000000;
                         }
@@ -372,10 +372,8 @@ input[type="search"] {
             button.navbar-toggler {
                 font-size: 1.2rem;
                 display: block;
-                 color: #fff;
-                 border-color: #fff;
                  &:hover {
-                     color: #000000;
+                     color: #ff0000;
                  }
             }
 
@@ -447,7 +445,7 @@ input[type="search"] {
                         font-size: 1rem;
                         background-color: transparent !important;
                         padding: 3px 10px !important;
-                        color: #ffffff;
+                       
 
                         @media (max-width: 992px) {
                             font-size: 0.8rem;

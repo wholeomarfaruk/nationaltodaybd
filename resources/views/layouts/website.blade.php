@@ -51,7 +51,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('website/css/style.css?v=1.1.5') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/style.css?v=1.1.6') }}">
     @stack('styles')
 </head>
 
@@ -111,7 +111,7 @@
                 <div class="logo">
                     <a href="/">
                         {{-- <span class="fw-bold">Fast.Fresh.Metro News</span><br> --}}
-                        <img style="max-width: 170px !important;" src="{{ asset(setting('general.logo')) }}"
+                        <img style="max-width: 225px !important;" src="{{ asset(setting('general.logo')) }}"
                             alt=""></a>
 
                 </div>

@@ -291,7 +291,7 @@ input[type=search] {
   color: #0f0f0f;
 }
 #header_area .menu_bar {
-  background-color: #ff0000;
+  background-color: #fff;
   border-top: 1px solid #ddd;
 }
 #header_area .menu_bar .logo {
@@ -344,7 +344,7 @@ input[type=search] {
 #header_area .menu_bar .menu-area .navbar-nav .nav-item {
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: #000;
 }
 @media (max-width: 992px) {
   #header_area .menu_bar .menu-area .navbar-nav .nav-item {
@@ -353,9 +353,6 @@ input[type=search] {
   #header_area .menu_bar .menu-area .navbar-nav .nav-item:nth-last-child(1) {
     border-bottom: 0;
   }
-}
-#header_area .menu_bar .menu-area .navbar-nav .nav-item a.nav-link {
-  color: #fff;
 }
 #header_area .menu_bar .menu-area .navbar-nav .nav-item a.nav-link.active {
   color: #000000;
@@ -366,11 +363,9 @@ input[type=search] {
 #header_area .menu_bar .menu-area button.navbar-toggler {
   font-size: 1.2rem;
   display: block;
-  color: #fff;
-  border-color: #fff;
 }
 #header_area .menu_bar .menu-area button.navbar-toggler:hover {
-  color: #000000;
+  color: #ff0000;
 }
 #header_area .menu_bar .menu-area .tools {
   display: flex;
@@ -434,7 +429,6 @@ input[type=search] {
   font-size: 1rem;
   background-color: transparent !important;
   padding: 3px 10px !important;
-  color: #ffffff;
 }
 @media (max-width: 992px) {
   #header_area .menu_bar .menu-area .tools .langswitch-box #lang-switcher {
