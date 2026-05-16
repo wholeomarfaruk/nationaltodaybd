@@ -149,9 +149,9 @@
             <nav class=" navbar  navbar-expand-lg navbar-light p-0">
                 <div class="container-fluid wrapper menu-area">
                     <!-- Brand -->
-                    <div class="logo" style="max-width: 170px !important;">
+                    <div class="logo" style="max-width: 200px !important;">
                         <a href="/">
-                            <img style="max-width: 170px !important;" src="{{ asset(setting('general.logo')) }}"
+                            <img style="max-width: 200px !important;" src="{{ asset(setting('general.logo')) }}"
                                 alt="">
                         </a>
                     </div>
