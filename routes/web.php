@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\PhotoCardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\SettingController;
@@ -128,6 +129,11 @@ route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')
         //ads
         Route::get('/ads', [AdController::class, 'index'])->name('ads');
         Route::get('/ads/edit/{id}', [AdController::class, 'edit'])->name('ads.edit');
+
+        //photocard templates
+        Route::get('/photocard-templates', fn() => view('admin.photo-card-templates'))->name('photocard.templates');
+        Route::get('/photocard-templates/{id}/field-map', [PhotoCardController::class, 'fieldMap'])->name('photocard.field-map');
+        Route::get('/photocards/download', [PhotoCardController::class, 'download'])->name('photocard.download');
 
         //settings
         Route::get('/settings', [SettingController::class, 'index'])->name('settings');

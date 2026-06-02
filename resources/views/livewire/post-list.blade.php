@@ -188,7 +188,7 @@
                                             </div>
                                         </td>
                                         <td class="px-5 py-4 sm:px-6">
-                                            <div x-data="{ open: false }" class="relative">
+                                            <div x-data="{ open: false, photocardOpen: false }" class="relative">
                                                 <button @click="open = !open" @click.away="open = false"
                                                     class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
                                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -212,6 +212,11 @@
                                                             </a>
                                                         @endcan
 
+                                                        <button type="button" @click="open = false; photocardOpen = true"
+                                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
+                                                            Photocard
+                                                        </button>
+
                                                         <button @click="navigator.clipboard.writeText('{{ url(route('post.show',['category'=>$post->category->name,'slug'=>$post->slug])) }}'); open = false; $toaster.fire({icon: 'success', title: 'URL copied to clipboard'})"
                                                             class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
                                                             Copy URL
@@ -225,6 +230,51 @@
                                                         @endcan
                                                     </div>
                                                 </div>
+
+                                                <!-- Template Picker Modal -->
+                                                <template x-if="photocardOpen">
+                                                    <div @click="photocardOpen = false" class="fixed inset-0 z-40 bg-black/50"></div>
+                                                </template>
+
+                                                <template x-if="photocardOpen">
+                                                    <div class="fixed inset-0 flex items-center justify-center z-50 p-4">
+                                                        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full">
+                                                            <div class="p-6">
+                                                                <div class="flex items-center justify-between mb-4">
+                                                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Select Template</h3>
+                                                                    <button type="button" @click="photocardOpen = false"
+                                                                        class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+
+                                                                <div class="space-y-2 mb-6">
+                                                                    @forelse ($activeTemplates as $template)
+                                                                        <div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                                                            <div>
+                                                                                <p class="text-sm font-medium text-gray-900 dark:text-white">{{ $template->name }}</p>
+                                                                                <p class="text-xs text-gray-500 dark:text-gray-400">{{ $template->slug }}</p>
+                                                                            </div>
+                                                                            <button type="button" @click="photocardOpen = false" wire:click="generatePhotoCard({{ $post->id }}, '{{ $template->slug }}')"
+                                                                                class="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                                                                                Generate
+                                                                            </button>
+                                                                        </div>
+                                                                    @empty
+                                                                        <p class="text-sm text-gray-600 dark:text-gray-400">No active templates available</p>
+                                                                    @endforelse
+                                                                </div>
+
+                                                                <button type="button" @click="photocardOpen = false"
+                                                                    class="w-full inline-flex items-center justify-center rounded-lg bg-gray-200 px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-300 transition dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600">
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
                                             </div>
 
                                         </td>
@@ -263,6 +313,34 @@
                 });
             }
 
+        });
+
+        Livewire.on('download-photocard', function(data) {
+            console.log('Download event received:', data);
+            const filename = data.filename || data[0]?.filename;
+            if (filename) {
+                const url = '{{ route("admin.photocard.download") }}?file=' + encodeURIComponent(filename);
+                console.log('Downloading from:', url);
+                window.location = url;
+            } else {
+                console.error('No filename in event data:', data);
+            }
+        });
+
+        Livewire.on('photocardGenerated', (data) => {
+            if (data.success) {
+                $toaster.fire({
+                    icon: 'success',
+                    title: 'Photocard generated successfully'
+                });
+            }
+        });
+
+        Livewire.on('photocardGenerationFailed', (data) => {
+            $toaster.fire({
+                icon: 'error',
+                title: 'Photocard generation failed: ' + (data.error || 'Unknown error')
+            });
         });
     </script>
 @endpush

@@ -1,0 +1,77 @@
+{
+  "name": "Viral Template",
+  "slug": "viral",
+  "description": "Eye-catching design with gradient and emphasis on featured image",
+  "canvas": {
+    "width": 1080,
+    "height": 1080,
+    "background": "#1e1e2e"
+  },
+  "required_fields": [
+    "title",
+    "image",
+    "logo"
+  ],
+  "optional_fields": [
+    "caption",
+    "category",
+    "date"
+  ],
+  "branding": {
+    "logo_position": {
+      "x": 920,
+      "y": 920,
+      "w": 100,
+      "h": 100
+    },
+    "footer_text": "nationaltodaybd.com",
+    "watermark": true
+  },
+  "fonts": {
+    "title": {
+      "file": "fonts/NotoSansBengali-Bold.ttf",
+      "size": 56,
+      "color": "#ffffff"
+    },
+    "caption": {
+      "file": "fonts/NotoSansBengali-Regular.ttf",
+      "size": 32,
+      "color": "#e0e0e0"
+    },
+    "footer": {
+      "file": "fonts/NotoSansBengali-Regular.ttf",
+      "size": 18,
+      "color": "#a0a0a0"
+    }
+  },
+  "layout": {
+    "image": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 650
+    },
+    "title": {
+      "x": 50,
+      "y": 700,
+      "max_width": 980
+    },
+    "caption": {
+      "x": 50,
+      "y": 850,
+      "max_width": 980
+    },
+    "category": {
+      "x": 50,
+      "y": 660,
+      "max_width": 300
+    },
+    "footer": {
+      "x": 50,
+      "y": 1040,
+      "max_width": 980
+    }
+  },
+  "date_format": "d M Y",
+  "language": "bn"
+}
