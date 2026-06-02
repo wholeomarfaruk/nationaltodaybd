@@ -188,33 +188,43 @@
                                             </div>
                                         </td>
                                         <td class="px-5 py-4 sm:px-6">
-                                            <div class="flex items-center gap-2">
+                                            <div x-data="{ open: false }" class="relative">
+                                                <button @click="open = !open" @click.away="open = false"
+                                                    class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+                                                    </svg>
+                                                </button>
+                                                <div x-show="open" x-transition
+                                                    class="absolute right-0 mt-2 w-48 rounded-lg bg-white shadow-lg ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 z-50">
+                                                    <div class="py-1">
+                                                        @if ($post->status === 'published')
+                                                            <a target="_blank"  href="{{route('post.show',['category'=>$post->category->name,'slug'=>$post->slug])}}"
+                                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
+                                                                Show
+                                                            </a>
+                                                        @endif
 
-                                                @if ($post->status === 'published')
-                                                    <a target="_blank"  href="{{route('post.show',['category'=>$post->category->name,'slug'=>$post->slug])}}"
-                                                        class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
-                                                        Show
-                                                    </a>
-                                                @elseif ($post->status === 'draft')
-                                                    {{-- <button wire:click="openViewModal({{ $post->id }})"
-                                                        class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
-                                                        Preview
-                                                    </button> --}}
-                                                @endif
+                                                        @can('post.edit')
+                                                            <a href="{{ route('admin.post.edit', $post->id) }}"
+                                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
+                                                                Edit
+                                                            </a>
+                                                        @endcan
 
+                                                        <button @click="navigator.clipboard.writeText('{{ url(route('post.show',['category'=>$post->category->name,'slug'=>$post->slug])) }}'); open = false; $toaster.fire({icon: 'success', title: 'URL copied to clipboard'})"
+                                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
+                                                            Copy URL
+                                                        </button>
 
-                                                @can('post.edit')
-                                                    <a href="{{ route('admin.post.edit', $post->id) }}"
-                                                        class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
-                                                        Edit
-                                                    </a>
-                                                @endcan
-                                                @can('post.delete')
-                                                    <button wire:click="deletePost({{ $post->id }})"
-                                                        class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">
-                                                        Delete
-                                                    </button>
-                                                @endcan
+                                                        @can('post.delete')
+                                                            <button @click="open = false" wire:click="deletePost({{ $post->id }})"
+                                                                class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 dark:text-red-400 dark:hover:bg-white/[0.05]">
+                                                                Delete
+                                                            </button>
+                                                        @endcan
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </td>
