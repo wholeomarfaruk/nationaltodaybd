@@ -272,7 +272,7 @@
                                             @endphp
                                             <div class="card">
                                                 <a
-                                                    href="{{ route('post.show', ['category' => $sportsnews->category->slug, 'slug' => $sportsnews->slug]) }}">
+                                                    href="{{ $sportsnews->PostUrl }}">
                                                     <div class="row g-0 align-items-center">
                                                         <div class="col-md-5">
                                                             <img style="object-fit: cover;"

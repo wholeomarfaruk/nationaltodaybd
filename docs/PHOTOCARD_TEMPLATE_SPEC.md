@@ -291,19 +291,6 @@ Any element can be auto-centered using `center_x` and/or `center_y`:
 }
 ```
 
-**Both (BUTTON):**
-```json
-{
-  "type": "button",
-  "value": "Click Me",
-  "center_x": true,
-  "center_y": true,
-  "w": 300,
-  "h": 60
-}
-```
-
----
 
 ### IMAGE Element
 
