@@ -75,7 +75,7 @@
             "value": "{category} | {date}",
             "x": 30,
             "y": 1050,
-            "max_width": 300,
+            "max_width": 400,
             "font": "fonts/NotoSansBengali-Regular.ttf",
             "size": 28,
             "color": "#000000",
