@@ -1,0 +1,140 @@
+{
+    "name": "News Card Square",
+    "slug": "news-card-square",
+    "description": "Square social media news card with featured image, centered logo and large Bengali title",
+
+    "canvas": {
+        "width": 1080,
+        "height": 1080,
+        "background": "#f1d2c3"
+    },
+
+    "required_fields": ["title", "logo", "date", "image"],
+
+    "optional_fields": ["caption", "category"],
+
+    "date_format": "d M Y",
+    "language": "bn",
+
+    "elements": [
+        {
+            "type": "image",
+            "field": "image",
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 610,
+            "fit": "cover",
+            "opacity": 1.0
+        },
+
+        {
+            "type": "image",
+            "field": "logo",
+            "x": 370,
+            "y": 530,
+            "w": 340,
+            "h": 150,
+            "fit": "contain",
+            "opacity": 1.0
+        },
+
+        {
+            "type": "text",
+            "field": "title",
+            "x": 40,
+            "y": 730,
+            "max_width": 1000,
+            "font": "fonts/NotoSansBengali-Bold.ttf",
+            "size": 68,
+            "color": "#004da8",
+            "align": "center",
+            "line_height": 95,
+            "max_lines": 3,
+            "text_shadow": {
+                "x": 2,
+                "y": 2,
+                "blur": 4,
+                "color": "#000000",
+                "opacity": 0.4
+            }
+        },
+
+        {
+            "type": "rectangle",
+            "x": 0,
+            "y": 1000,
+            "w": 1080,
+            "h": 80,
+            "fill": "#ffffff",
+            "opacity": 1.0
+        },
+
+        {
+            "type": "text",
+            "value": "{category} | {date}",
+            "x": 30,
+            "y": 1050,
+            "max_width": 300,
+            "font": "fonts/NotoSansBengali-Regular.ttf",
+            "size": 28,
+            "color": "#000000",
+            "align": "left",
+            "text_shadow": {
+                "x": 1,
+                "y": 1,
+                "blur": 2,
+                "color": "#666666",
+                "opacity": 0.1
+            }
+        },
+
+        {
+            "type": "text",
+            "value": "nationaltodaybd.com",
+            "x": 750,
+            "y": 1050,
+            "max_width": 300,
+            "font": "fonts/NotoSansBengali-Regular.ttf",
+            "size": 28,
+            "color": "#000000",
+            "align": "right",
+            "text_shadow": {
+                "x": 1,
+                "y": 1,
+                "blur": 2,
+                "color": "#666666",
+                "opacity": 0.1
+            }
+        },
+        {
+            "type": "rectangle",
+            "center_x": true,
+            "y": 980,
+            "w": 200,
+            "h": 50,
+            "fill": "#ff0000",
+            "radius": 40
+            
+        },
+        {
+            "type": "text",
+            "value": "বিস্তারিত কমেন্টে",
+            "x": 460,
+            "y": 1015,
+            "max_width": 180,
+            "font": "fonts/NotoSansBengali-Bold.ttf",
+            "size": 23,
+            "color": "#ffffff",
+            "align": "center",
+
+            "text_shadow": {
+                "x": 1,
+                "y": 1,
+                "blur": 2,
+                "color": "#000000",
+                "opacity": 0.2
+            }
+        }
+    ]
+}
