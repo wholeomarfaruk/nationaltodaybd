@@ -1,5 +1,5 @@
 <div>
-    <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+    <div class="mx-auto max-w-7xl p-4 md:p-6">
         <!-- Breadcrumb Start -->
         <div x-data="{ pageName: `Manage Users`}">
             <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -277,7 +277,7 @@
             <!-- Modal footer -->
             <div class="mt-4 flex justify-end">
                 <button wire:click="closeEditModal" @click="open = false"
-                    class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2 hover:bg-gray-400inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">Cancel</button>
+                    class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2 hover:bg-gray-400 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white">Cancel</button>
                 <button wire:click="updateUser"
                     class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Save</button>
             </div>

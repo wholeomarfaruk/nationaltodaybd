@@ -18,6 +18,8 @@ class Ads extends Component
 
     public function render()
     {
+        Ad::deactivateExpired();
+
         $query = Ad::query();
         $search = $this->search;
         if ($this->search) {

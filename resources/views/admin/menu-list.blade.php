@@ -3,7 +3,7 @@
 
 
 <div>
-    <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+    <div class="mx-auto max-w-7xl p-4 md:p-6">
         <!-- Breadcrumb Start -->
         <div x-data="{ pageName: `Menus List` }" class="mb-4">
             <div class="mb-6 flex flex-wrap items-center justify-between gap-3">

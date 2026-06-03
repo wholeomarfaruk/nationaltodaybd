@@ -25,6 +25,7 @@ class EditAd extends Component
     public $ad;
     public function mount($adId)
     {
+        Ad::deactivateExpired();
 
         $this->adId = $adId;
         $ad = Ad::find($adId);
@@ -32,7 +33,7 @@ class EditAd extends Component
         if (!$ad) {
             abort(404);
         }
-        $this->status = $ad->status;
+        $this->status = $ad->status == 1 ? 'active' : 'inactive';
         $this->title = $ad->title;
         $this->description = $ad->description;
         $this->link = $ad->link;
@@ -73,7 +74,7 @@ class EditAd extends Component
 
 
 
-        $ad->status = $this->status;
+        $ad->status = $this->status === 'active' ? 1 : 0;
         $ad->title = $this->title;
         $ad->description = $this->description;
         $ad->link = $this->link;

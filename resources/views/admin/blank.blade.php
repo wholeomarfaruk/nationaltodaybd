@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+<div class="mx-auto max-w-7xl p-4 md:p-6">
                         <!-- Breadcrumb Start -->
                         <div x-data="{ pageName: `Blank Page`}">
                             <div

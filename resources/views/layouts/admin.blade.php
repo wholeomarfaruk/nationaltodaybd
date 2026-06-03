@@ -10,7 +10,8 @@
         Admin Dashboard | {{ setting('general.site_title') }}
     </title>
     <link rel="icon" href="favicon.ico">
-    <link href="{{ asset('tailadmin/build/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('tailadmin/build/style.css') }}" rel="stylesheet"> --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -44,22 +45,21 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen bg-white dark:bg-gray-950">
         <!-- ===== Sidebar Start ===== -->
         @include('layouts.admin-sidebar')
-
         <!-- ===== Sidebar End ===== -->
 
         <!-- ===== Content Area Start ===== -->
-        <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
-            <!-- Small Device Overlay Start -->
+        <div class="relative flex flex-col flex-1 overflow-hidden">
+            <!-- Mobile Overlay Start -->
             <div @click="sidebarToggle = false" :class="sidebarToggle ? 'block lg:hidden' : 'hidden'"
-                class="fixed w-full h-screen z-9 bg-gray-900/50"></div>
-            <!-- Small Device Overlay End -->
+                class="fixed inset-0 z-40 bg-gray-900/50 pointer-events-auto"></div>
+            <!-- Mobile Overlay End -->
 
             <!-- ===== Header Start ===== -->
             <header x-data="{ menuToggle: false }"
-                class="sticky top-0 z-99 flex w-full border-gray-200 bg-white lg:border-b dark:border-gray-800 dark:bg-gray-900">
+                class="sticky top-0 z-50 flex w-full border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
                 <div class="flex grow flex-col items-center justify-between lg:flex-row lg:px-6">
                     <div
                         class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4 dark:border-gray-800">
@@ -564,7 +564,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             <!-- ===== Header End ===== -->
 
             <!-- ===== Main Content Start ===== -->
-            <main>
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-white dark:bg-gray-950">
                 <!-- Your main content goes here -->
                 @yield('content')
             </main>

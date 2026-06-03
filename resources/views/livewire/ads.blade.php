@@ -1,202 +1,125 @@
 <div>
-    <div class="container mx-auto p-4 md:p-8">
-
-        {{-- <div class="flex space-x-2 mb-6">
-            <button class="bg-cyan-100 text-cyan-700 font-semibold py-2 px-5 rounded-full text-sm shadow-sm">
-                All Ads
-            </button>
-            <button
-                class="bg-transparent text-gray-600 font-semibold py-2 px-5 rounded-full text-sm hover:bg-gray-200 transition-colors">
-                Active
-            </button>
-            <button
-                class="bg-transparent text-gray-600 font-semibold py-2 px-5 rounded-full text-sm hover:bg-gray-200 transition-colors">
-                Inactive
-            </button>
-            <button
-                class="bg-transparent text-gray-600 font-semibold py-2 px-5 rounded-full text-sm hover:bg-gray-200 transition-colors">
-                Expired
-            </button>
-        </div> --}}
-
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
-
-                <div class="lg:col-span-1">
-                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </span>
-                        <input type="text" wire:model.live="search" id="search" placeholder="Search ads..."
-                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                </div>
-
-                <div class="lg:col-span-1">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <div class="flex space-x-2">
-                        <select wire:model.live="status" name="" id=""
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="">All</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                            <option value="expired">Expired</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="md:col-span-2 lg:col-span-2 grid grid-cols-2 gap-4">
-                    <div>
-                        <label for="date-from" class="block text-sm font-medium text-gray-700 mb-1">From</label>
-                        <input wire:model.live="date_from" type="date" id="date-from"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label  for="date-to" class="block text-sm font-medium text-gray-700 mb-1">To</label>
-                        <input wire:model.live="date_to" type="date" id="date-to"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
+    <!-- Filters Section -->
+    <div class="rounded-lg sm:rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-4 sm:p-6 mb-6 sm:mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <!-- Search -->
+            <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">Search</label>
+                <div class="relative">
+                    <svg class="absolute left-3 top-2.5 w-4 sm:w-5 h-4 sm:h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" wire:model.live="search" placeholder="Search..."
+                        class="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-400"/>
                 </div>
             </div>
+
+            <!-- Status Filter -->
+            <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">Status</label>
+                <select wire:model.live="status" class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+                    <option value="">All Ads</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="expired">Expired</option>
+                </select>
+            </div>
+
+            <!-- Date From -->
+            <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">From</label>
+                <input wire:model.live="date_from" type="date"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-white"/>
+            </div>
+
+            <!-- Date To -->
+            <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">To</label>
+                <input wire:model.live="date_to" type="date"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-white"/>
+            </div>
         </div>
+    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
-            @if ($ads->count() > 0)
+    <!-- Ads Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        @if ($ads->count() > 0)
+            @foreach ($ads as $ad)
+                <div class="group rounded-lg sm:rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-hidden hover:shadow-lg transition-all duration-300">
+                    <!-- Ad Card Content -->
+                    <div class="flex flex-col sm:flex-row h-full">
+                        <!-- Image Section -->
+                        <div class="relative w-full sm:w-2/5 h-48 sm:h-64 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                            <img src="{{ $ad->image }}" alt="{{ $ad->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+                            <!-- Status Badge -->
+                            <div class="absolute top-4 left-4">
+                                @if ($ad->status == 1)
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-700 dark:bg-green-500/20 dark:text-green-400">
+                                        <span class="inline-block h-2 w-2 rounded-full bg-green-600 dark:bg-green-400"></span>
+                                        Active
+                                    </span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1.5 text-xs font-semibold text-red-700 dark:bg-red-500/20 dark:text-red-400">
+                                        <span class="inline-block h-2 w-2 rounded-full bg-red-600 dark:bg-red-400"></span>
+                                        Inactive
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                @foreach ($ads as $ad)
-                    @if ($ad->status == 1)
-                        <div class="relative rounded-lg shadow-xl overflow-hidden min-h-[280px]">
-                            <img class="absolute top-0 right-0 h-full w-full md:w-3/5 object-cover"
-                                src="{{ $ad->image }}"
-                                alt="Workspace">
+                        <!-- Content Section -->
+                        <div class="flex-1 p-3 sm:p-4 md:p-5 flex flex-col">
+                            <!-- Header -->
+                            <div class="flex-1">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{{ $ad->title }}</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm line-clamp-2">{{ $ad->description }}</p>
+                            </div>
 
-                            <div
-                                class="relative h-full w-full md:w-3/5 p-8 flex flex-col justify-center bg-gradient-to-r from-blue-900 to-blue-800/80">
-                                <div
-                                    class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center border-2 border-white/20 mb-4">
-                                    <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                            <!-- Meta Information -->
+                            <div class="space-y-1 sm:space-y-1.5 my-3 sm:my-4 text-xs sm:text-sm">
+                                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                    <svg class="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 01-2.828 2.828l-7-7A2 2 0 0012 3z"/>
                                     </svg>
+                                    <span class="truncate">Ad ID: #{{ $ad->id }}</span>
                                 </div>
-                                <h3 class="text-3xl font-bold text-white mb-2">{{ $ad->title }}</h3>
-                                <p class="text-blue-100 mb-2">{{ $ad->description }}</p>
-                                <p class=""><span class="text-xs text-gray-200 ">Ad ID #{{ $ad->id }}</span>
-                                </p>
-                                <p class="text-xs text-gray-200">
-                                    Updated At {{ \Carbon\Carbon::parse($ad->updated_at)->format('d-m-Y') }}
-                                </p>
-                                <p class="mb-4"><span class="text-xs text-red-200 ">Expire At
-                                        {{ \Carbon\Carbon::parse($ad->expire_at)->format('d-m-Y') }}</span></p>
-                                <div class="flex items-center justify-start gap-3">
-                                    <a href="{{ route('admin.ads.edit', $ad->id) }}"
-                                        class="w-auto self-start bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-                                        Edit Ad
-                                    </a>
-
+                                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                    <svg class="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="truncate">Updated: {{ \Carbon\Carbon::parse($ad->updated_at)->format('M d, Y') }}</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
+                                    <svg class="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="truncate">Expires: {{ \Carbon\Carbon::parse($ad->expire_at)->format('M d, Y') }}</span>
                                 </div>
                             </div>
-                             <span class="absolute top-2 right-3 text-xs">
-                                <span
-                                    class="inline-flex items-center justify-center gap-1 rounded-full bg-success-50 px-2.5 py-0.5 text-sm font-medium text-success-600 dark:bg-success-500/15 dark:text-success-500">
-                                    Active
-                                </span>
-                            </span>
-                        </div>
-                    @else
-                        <div class="relative rounded-lg shadow-xl overflow-hidden min-h-[280px]">
-                            <img class="absolute top-0 right-0 h-full w-full md:w-3/5 object-cover"
-                                src="{{ $ad->image }}"
-                                alt="Workspace">
 
-                            <div
-                                class="relative h-full w-full md:w-3/5 p-8 flex flex-col justify-center bg-gradient-to-r from-gray-800 to-gray-700/80">
-                                <div
-                                    class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center border-2 border-white/20 mb-4">
-                                    <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                            <!-- Actions -->
+                            <div class="flex items-center gap-3 pt-2 sm:pt-3 border-t border-gray-200 dark:border-gray-800">
+                                <a href="{{ route('admin.ads.edit', $ad->id) }}"
+                                    class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-brand-700 transition-colors">
+                                    <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                     </svg>
-                                </div>
-                                <h3 class="text-3xl font-bold text-white mb-2">{{ $ad->title }}</h3>
-                                <p class="text-blue-100 mb-2">{{ $ad->description }}</p>
-                                <p class=""><span class="text-xs text-gray-200 ">Ad ID #{{ $ad->id }}</span>
-                                </p>
-                                <p class="text-xs text-gray-200">
-                                    Updated At {{ \Carbon\Carbon::parse($ad->updated_at)->format('d-m-Y') }}
-                                </p>
-                                <p class="mb-4"><span class="text-xs text-red-200 ">Expire At
-                                        {{ \Carbon\Carbon::parse($ad->expire_at)->format('d-m-Y') }}</span></p>
-                                <div class="flex items-center justify-start gap-3">
-                                    <a href="{{ route('admin.ads.edit', $ad->id) }}"
-                                        class="w-auto self-start bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-                                        Edit Ad
-                                    </a>
-
-                                </div>
+                                    Edit
+                                </a>
                             </div>
-                            <span class="absolute top-2 right-3 text-xs">
-                                <span
-                                    class="inline-flex items-center justify-center gap-1 rounded-full bg-error-50 px-2.5 py-0.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
-                                    Inactive
-                                </span>
-                            </span>
                         </div>
-                    @endif
-                @endforeach
-            @else
-                <div class="col-span-1">
-                    <p class="text-gray-500 text-center">No ads found.</p>
-                </div>
-            @endif
-            {{-- <div class="relative rounded-lg shadow-xl overflow-hidden min-h-[280px]">
-                <img class="absolute top-0 right-0 h-full w-full md:w-3/5 object-cover"
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
-                    alt="Collaboration">
-
-                <div
-                    class="relative h-full w-full md:w-3/5 p-8 flex flex-col justify-center bg-gradient-to-r from-gray-800 to-gray-700/80">
-                    <div
-                        class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center border-2 border-white/20 mb-4">
-                        <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-3xl font-bold text-white mb-2">Deals on Demand</h3>
-                    <p class="text-gray-200 mb-6">The step by step process to craft 6-figure offers.</p>
-                    <div class="flex items-center justify-center gap-3">
-                        <a href="#"
-                            class="w-auto self-start bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-                            Edit Ad
-                        </a>
-                        <a href="#"
-                            class="group w-auto self-start bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-
-                            <svg class="cursor-pointer fill-gray-700 dark:fill-gray-400 group-hover:fill-error-500"
-                                width="23" height="23" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M6.54142 3.7915C6.54142 2.54886 7.54878 1.5415 8.79142 1.5415H11.2081C12.4507 1.5415 13.4581 2.54886 13.4581 3.7915V4.0415H15.6252H16.666C17.0802 4.0415 17.416 4.37729 17.416 4.7915C17.416 5.20572 17.0802 5.5415 16.666 5.5415H16.3752V8.24638V13.2464V16.2082C16.3752 17.4508 15.3678 18.4582 14.1252 18.4582H5.87516C4.63252 18.4582 3.62516 17.4508 3.62516 16.2082V13.2464V8.24638V5.5415H3.3335C2.91928 5.5415 2.5835 5.20572 2.5835 4.7915C2.5835 4.37729 2.91928 4.0415 3.3335 4.0415H4.37516H6.54142V3.7915ZM14.8752 13.2464V8.24638V5.5415H13.4581H12.7081H7.29142H6.54142H5.12516V8.24638V13.2464V16.2082C5.12516 16.6224 5.46095 16.9582 5.87516 16.9582H14.1252C14.5394 16.9582 14.8752 16.6224 14.8752 16.2082V13.2464ZM8.04142 4.0415H11.9581V3.7915C11.9581 3.37729 11.6223 3.0415 11.2081 3.0415H8.79142C8.37721 3.0415 8.04142 3.37729 8.04142 3.7915V4.0415ZM8.3335 7.99984C8.74771 7.99984 9.0835 8.33562 9.0835 8.74984V13.7498C9.0835 14.1641 8.74771 14.4998 8.3335 14.4998C7.91928 14.4998 7.5835 14.1641 7.5835 13.7498V8.74984C7.5835 8.33562 7.91928 7.99984 8.3335 7.99984ZM12.4168 8.74984C12.4168 8.33562 12.081 7.99984 11.6668 7.99984C11.2526 7.99984 10.9168 8.33562 10.9168 8.74984V13.7498C10.9168 14.1641 11.2526 14.4998 11.6668 14.4998C12.081 14.4998 12.4168 14.1641 12.4168 13.7498V8.74984Z">
-                                </path>
-                            </svg>
-                        </a>
                     </div>
                 </div>
-            </div> --}}
-
-        </div>
+            @endforeach
+        @else
+            <!-- Empty State -->
+            <div class="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-12 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <h3 class="mt-2 text-lg font-semibold text-gray-900 dark:text-white">No ads found</h3>
+                <p class="mt-1 text-gray-600 dark:text-gray-400">No ads match your filters. Try adjusting your search.</p>
+            </div>
+        @endif
     </div>
 </div>
