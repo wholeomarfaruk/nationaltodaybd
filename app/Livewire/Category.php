@@ -50,12 +50,7 @@ class Category extends Component
         $category = new CategoryList();
         $category->name = $this->name;
         $category->parent_id = $this->parent_id;
-        $slug = Str::slug($this->name);
-        if (CategoryList::where('slug', $slug)->exists()) {
-            $slug = $slug . "-";
-        }
-        $category->slug = $slug;
-
+        // Slug is generated & kept unique automatically by the Category model.
         $category->save();
         $this->createModal = false;
         $this->dispatch('categoryCreated');
@@ -86,6 +81,11 @@ class Category extends Component
         $this->category=$category;
 
         if ($category) {
+            // Backfill a slug for any legacy row that is missing one so the
+            // route below never fails with a missing parameter.
+            if (empty($category->slug)) {
+                $category->save(); // model saving-hook generates the slug
+            }
             $this->editCategoryId = $category->id;
             $this->editCategoryName = $category->name;
             $this->selectedCategory_parent_id = $category->parent_id;
@@ -104,16 +104,9 @@ class Category extends Component
         $category = CategoryList::find($this->editCategoryId);
         if ($category) {
             $category->name = $this->editCategoryName;
-            $slug = Str::slug($this->name);
-
-            // Check if slug exists in other categories (excluding current one)
-            if (CategoryList::where('slug', $slug)->where('id', '!=', $this->editCategoryId)->exists()) {
-                // Slug already taken by another category
-                // Append something to make it unique
-                $slug = $slug . '-' . time(); // or some other unique identifier
-            }
-
-            $category->slug = $slug;
+            // Regenerate the slug from the (edited) name; the Category model
+            // keeps it unique and non-empty on save.
+            $category->slug = Str::slug($this->editCategoryName);
             $category->parent_id = $this->selectedCategory_parent_id;
             $category->save();
             $this->editModal = false;

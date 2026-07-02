@@ -8,7 +8,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="header"><i class="fa-solid fa-newspaper"></i> {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>
@@ -119,7 +119,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="header"><i class="fa-solid fa-newspaper"></i> {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>
@@ -169,7 +169,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="header"><i class="fa-solid fa-newspaper"></i> {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>
@@ -273,7 +273,7 @@
                             <div class="header"><i class="fa-solid fa-newspaper"></i>
                                 {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>
@@ -308,7 +308,7 @@
                             <div class="header"><i class="fa-solid fa-newspaper"></i>
                                 {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>
@@ -406,7 +406,7 @@
                             <div class="header"><i class="fa-solid fa-newspaper"></i>
                                 {{ $newsPosts->first()->category->name }}
                             </div>
-                            <a href="{{ route('category', $newsPosts->first()->category->slug) }}"
+                            <a href="{{ optional($newsPosts->first()->category)->slug ? route('category', $newsPosts->first()->category->slug) : '#' }}"
                                 class="text-decoration-none fw-bold">
                                 {{ $newsPosts->first()->category->name }} সব নিউজ <i class="fa-solid fa-chevron-right"></i>
                             </a>

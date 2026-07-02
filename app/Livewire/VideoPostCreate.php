@@ -139,12 +139,7 @@ class VideoPostCreate extends Component
         ]);
         $category = new Category();
         $category->name = $this->name;
-        $slug = Str::slug($this->name);
-        if (Category::where('slug', $slug)->exists()) {
-            $slug = $slug . "-";
-        }
-        $category->slug = $slug;
-
+        // Slug is generated & kept unique automatically by the Category model.
         $category->parent_id = $this->parent_id;
         $category->save();
         $this->createModal = false;
