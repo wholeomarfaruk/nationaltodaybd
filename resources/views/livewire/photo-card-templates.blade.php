@@ -20,6 +20,9 @@
                         <thead>
                             <tr class="border-b border-gray-100 dark:border-gray-800">
                                 <th class="px-5 py-3 sm:px-6">
+                                    <p class="text-theme-xs font-medium text-gray-500 dark:text-gray-400">Preview</p>
+                                </th>
+                                <th class="px-5 py-3 sm:px-6">
                                     <p class="text-theme-xs font-medium text-gray-500 dark:text-gray-400">Name</p>
                                 </th>
                                 <th class="px-5 py-3 sm:px-6">
@@ -40,13 +43,23 @@
                         <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
                             @if ($templates->isEmpty())
                                 <tr>
-                                    <td colspan="5" class="px-5 py-4 sm:px-6 text-center">
+                                    <td colspan="6" class="px-5 py-4 sm:px-6 text-center">
                                         <p class="text-theme-sm text-gray-500 dark:text-gray-400">No templates found.</p>
                                     </td>
                                 </tr>
                             @else
                                 @foreach ($templates as $template)
                                     <tr>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            @if ($template->preview_image)
+                                                <img src="{{ asset($template->preview_image) }}" alt="{{ $template->name }} preview"
+                                                    class="h-20 w-20 rounded-lg object-cover ring-1 ring-gray-200 dark:ring-gray-700" />
+                                            @else
+                                                <div class="flex h-20 w-20 items-center justify-center rounded-lg bg-gray-100 text-theme-xs text-gray-400 dark:bg-gray-800">
+                                                    No preview
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td class="px-5 py-4 sm:px-6">
                                             <p class="text-theme-sm font-medium text-gray-800 dark:text-white/90">{{ $template->name }}</p>
                                         </td>
@@ -87,6 +100,10 @@
                                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
                                                             Edit Fields
                                                         </a>
+                                                        <button type="button" @click="open = false" wire:click="regeneratePreview({{ $template->id }})"
+                                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
+                                                            Regenerate Preview
+                                                        </button>
                                                         <button type="button" @click="open = false" wire:click="toggleActive({{ $template->id }})"
                                                             class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/[0.05]">
                                                             {{ $template->is_active ? 'Deactivate' : 'Activate' }}
@@ -162,6 +179,13 @@
                     title: 'Template not found'
                 });
             }
+        });
+
+        Livewire.on('previewRegenerated', (data) => {
+            $toaster.fire({
+                icon: data.success ? 'success' : 'error',
+                title: data.success ? 'Preview regenerated' : 'Preview generation failed'
+            });
         });
     </script>
 @endpush

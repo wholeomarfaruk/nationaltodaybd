@@ -7,7 +7,18 @@ use Exception;
 
 class TemplateResolver
 {
+    /**
+     * Load an active template's config array by slug.
+     */
     public function load(string $slug): array
+    {
+        return $this->loadModel($slug)->config;
+    }
+
+    /**
+     * Load the active template model by slug (config + relations available).
+     */
+    public function loadModel(string $slug): PhotoCardTemplate
     {
         $template = PhotoCardTemplate::where('slug', $slug)
             ->where('is_active', true)
@@ -17,17 +28,13 @@ class TemplateResolver
             throw new Exception("Template not found or inactive: {$slug}");
         }
 
-        return $template->config;
+        return $template;
     }
 
     public function validate(array $template, array $data): void
     {
-        if (empty($template['required_fields'])) {
-            return;
-        }
-
-        foreach ($template['required_fields'] as $field) {
-            if (!isset($data[$field]) || empty($data[$field])) {
+        foreach ($template['required_fields'] ?? [] as $field) {
+            if (empty($data[$field])) {
                 throw new Exception("Missing required field: {$field}");
             }
         }

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\PhotoCardTemplate;
+use App\Services\PhotoCard\PreviewGenerator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,5 +38,19 @@ class PhotoCardTemplates extends Component
             'success' => true,
             'active' => $template->is_active,
         ]);
+    }
+
+    public function regeneratePreview($id)
+    {
+        $template = PhotoCardTemplate::find($id);
+
+        if (!$template) {
+            $this->dispatch('templateNotFound', ['error' => true]);
+            return;
+        }
+
+        $preview = app(PreviewGenerator::class)->generate($template);
+
+        $this->dispatch('previewRegenerated', ['success' => (bool) $preview]);
     }
 }

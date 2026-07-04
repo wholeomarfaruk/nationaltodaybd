@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\PhotoCardTemplate;
+use App\Services\PhotoCard\PreviewGenerator;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class PhotoCardTemplateSeeder extends Seeder
 {
@@ -28,7 +28,7 @@ class PhotoCardTemplateSeeder extends Seeder
                 continue;
             }
 
-            PhotoCardTemplate::updateOrCreate(
+            $model = PhotoCardTemplate::updateOrCreate(
                 ['slug' => $template['slug']],
                 [
                     'name' => $template['name'] ?? basename($file, '.json'),
@@ -39,6 +39,14 @@ class PhotoCardTemplateSeeder extends Seeder
             );
 
             $this->command->info("✓ Seeded template: {$template['slug']}");
+
+            // Generate a preview thumbnail so admins can see the template.
+            if (extension_loaded('imagick')) {
+                $preview = app(PreviewGenerator::class)->generate($model);
+                $this->command->{$preview ? 'info' : 'warn'}(
+                    ($preview ? '  ✓ preview: ' : '  ✗ preview failed: ') . $template['slug']
+                );
+            }
         }
     }
 }

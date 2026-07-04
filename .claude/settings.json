@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -r \"json_decode\\(file_get_contents\\('resources/photocard-templates/news-card-header-footer.json'\\)\\); echo json_last_error_msg\\(\\);\")",
+      "Bash(python -c \"import json;json.load\\(open\\('resources/photocard-templates/news-card-header-footer.json'\\)\\);print\\('valid json'\\)\")",
+      "Bash(python -c \"import json;json.load\\(open\\('resources/photocard-templates/news-card-header-footer.json'\\)\\);print\\('json valid'\\)\")",
+      "Bash(php -r ' *)",
+      "Bash(php -r \"json_decode\\(file_get_contents\\('resources/photocard-templates/news-card-header-footer.json'\\)\\); echo 'json: '.json_last_error_msg\\(\\).PHP_EOL;\")",
+      "Bash(php -r \"json_decode\\(file_get_contents\\('resources/photocard-templates/news-card-header-footer.json'\\)\\); echo json_last_error_msg\\(\\).PHP_EOL;\")"
+    ]
+  }
+}
