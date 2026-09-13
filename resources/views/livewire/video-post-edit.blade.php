@@ -355,12 +355,6 @@
     </div>
     @push('scripts')
         <script>
-            // When Livewire updates, re-init editor if needed
-            document.addEventListener('livewire:update', function() {
-                if (!tinymce.get('#editor')) {
-                    initTinyMCE();
-                }
-            });
             Livewire.on('banner_post', (data) => {
                 console.log(data)
                 // data[0] হলো object
@@ -394,29 +388,6 @@
                 console.log('Loaded')
             });
         </script>
-        {{-- <script src="https://cdn.tiny.cloud/1/6fc0o57nwmnuyujo3x2t2m7qttqr09s74djxb47lnzygcixp/tinymce/8/tinymce.min.js"
-            referrerpolicy="origin" crossorigin="anonymous"></script>
-
-
-        <script>
-            tinymce.init({
-                selector: '#editor',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-
-                setup: function(editor) {
-                    editor.on('change keyup', function() {
-                        @this.set('content', editor.getContent()); // update Livewire property
-                    });
-                },
-
-                init_instance_callback: function(editor) {
-                    editor.setContent(@this.get('content') || ''); // load existing content when editing
-                }
-            });
-        </script> --}}
-
-
         <script>
             document.addEventListener('livewire:initialized', () => {
                 // Your JavaScript code that depends on Livewire being ready goes here.
@@ -425,23 +396,21 @@
                 // You can now safely interact with Livewire's global object (window.Livewire)
                 // or perform actions related to Livewire components.
             });
+        </script>
+        <script type="text/javascript" src="{{ asset('plugins/omartexteditor/omar-text-editor.min.js') }}"></script>
+        <script>
             document.addEventListener('livewire:initialized', function() {
-
-                var editor = new RichTextEditor("#editor", {
-                    contentCssUrl: "/plugins/richtexteditor/runtime/richtexteditor_content.css",
-                    callbacks: {
-                        onchange: function(contents) {
-                            console.log("Editor content:", contents); // debug
-                            @this.set('content', contents); // update Livewire property
-                        }
-                    }
+                var editor = OmarTextEditor.init({
+                    selector: '#editor',
+                    plugins: ['link', 'autolink', 'anchor', 'image', 'media', 'embed', 'table', 'codesample', 'emoticons', 'charmap', 'searchreplace', 'wordcount', 'elementpath', 'spacing', 'visualblocks'],
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
                 });
-                editor.attachEvent("change", function() {
-                    @this.set('content', editor.getHTML());
-                });
-                // Load existing content from Livewire if editing
-                editor.setHTMLCode(@this.get('content') || '');
 
+                editor.setContent(@this.get('content') || '');
+
+                editor.on('change', function() {
+                    @this.set('content', editor.getContent());
+                });
             });
         </script>
     @endpush

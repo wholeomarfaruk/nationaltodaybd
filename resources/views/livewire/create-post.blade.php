@@ -327,27 +327,6 @@
                 console.log('Loaded')
             });
         </script>
-        {{-- <script src="https://cdn.tiny.cloud/1/6fc0o57nwmnuyujo3x2t2m7qttqr09s74djxb47lnzygcixp/tinymce/8/tinymce.min.js"
-            referrerpolicy="origin" crossorigin="anonymous"></script>
-
-        <script>
-            tinymce.init({
-                selector: '#editor',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-
-                setup: function(editor) {
-                    editor.on('change keyup', function() {
-                        @this.set('content', editor.getContent()); // update Livewire property
-                    });
-                },
-
-                init_instance_callback: function(editor) {
-                    editor.setContent(@this.get('content') || ''); // load existing content when editing
-                }
-            });
-        </script> --}}
-
         <script>
             document.addEventListener('livewire:load', function() {
                 alert('test')
@@ -393,33 +372,20 @@
 
 
     </script>
-       </script>
-               <script src="https://cdn.tiny.cloud/1/{{ config('services.tinymce.api_key') }}/tinymce/8/tinymce.min.js"
-            referrerpolicy="origin" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ asset('plugins/omartexteditor/omar-text-editor.min.js') }}"></script>
         <script>
             document.addEventListener('livewire:initialized', function() {
-                tinymce.init({
+                var editor = OmarTextEditor.init({
                     selector: '#editor_data',
-                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                    plugins: ['link', 'autolink', 'anchor', 'image', 'media', 'embed', 'table', 'codesample', 'emoticons', 'charmap', 'searchreplace', 'wordcount', 'elementpath', 'spacing', 'visualblocks'],
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
+                });
 
-                    setup: function(editor) {
-                        editor.on('change keyup', function() {
-                            @this.set('content', editor.getContent());
-                        });
-                    },
+                editor.setContent(@this.get('content') || '');
 
-                    init_instance_callback: function(editor) {
-                        editor.setContent(@this.get('content') || '');
-                    }
+                editor.on('change', function() {
+                    @this.set('content', editor.getContent());
                 });
             });
-
-            function syncEditorContent() {
-                var editor = tinymce.get('editor_data');
-                if (editor) {
-                    @this.set('content', editor.getContent());
-                }
-            }
         </script>
     @endpush

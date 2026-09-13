@@ -21,11 +21,9 @@
 
 @if (Route::currentRouteName() === 'admin.post.create' || Route::currentRouteName() === 'admin.post.edit'
 || Route::currentRouteName() === 'admin.video.post.create' || Route::currentRouteName() === 'admin.video.post.edit' )
-    <!-- Editor.js core -->
-{{-- RichTextEditor   --}}
-<link rel="stylesheet" href="{{asset('plugins/richtexteditor/rte_theme_default.css')}}" />
-<script type="text/javascript" src="{{asset('plugins/richtexteditor/rte.js')}}"></script>
-<script type="text/javascript" src='{{asset('plugins/richtexteditor/plugins/all_plugins.js')}}'></script>
+    <!-- OmarTextEditor -->
+<link rel="stylesheet" href="{{ asset('plugins/omartexteditor/theme/default.css') }}" />
+<link rel="stylesheet" href="{{ asset('plugins/omartexteditor/theme/content.css') }}" />
 
 @endif
 
